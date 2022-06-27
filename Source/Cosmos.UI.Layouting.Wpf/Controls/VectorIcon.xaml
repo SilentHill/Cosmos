@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Cosmos.UI.Layoutting.Wpf.Controls.VectorIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cosmos.UI.Layoutting.Wpf.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel LastChildFill="False">
+        <TextBlock x:Name="icon_text" Visibility="Collapsed" TextAlignment="Center" DockPanel.Dock="Bottom">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Foreground" Value="{Binding IconFill, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="True"/>
+                                <Condition Binding="{Binding IsEnableHoverChange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{Binding IconHoverFill, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Path x:Name="icon_path" DockPanel.Dock="Top" Stretch="Uniform" >
+            <Path.Style>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="Fill" Value="{Binding IconFill, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="True"/>
+                                <Condition Binding="{Binding IsEnableHoverChange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Fill" Value="{Binding IconHoverFill, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Path.Style>
+        </Path>
+    </DockPanel>
+</UserControl>
